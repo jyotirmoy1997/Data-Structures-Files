@@ -1,3 +1,3 @@
 # Data-Structures-Files
 
-Implementation of different Data Strcutures in C++.
+Implementation of different Data Structures in C++.
