@@ -48,11 +48,12 @@ class Graph
             }
             distance[source] = 0;
             prev[source] = source;
-            priority_queue<pair<int, int>> pq;
+            priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
             pq.push(make_pair(0, source));
             while(!pq.empty())
             {
                 auto it = pq.top();
+                // cout << it.first << " - " << it.second << endl;
                 pq.pop();
                 int u = it.second;
                 for(auto adj : graph[u])
