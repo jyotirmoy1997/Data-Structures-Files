@@ -86,6 +86,5 @@ int main()
     insertBNTree(root, 7, 10);
     traverseInorder(root);
     mirror(root);
-    cout << endl;
     traverseInorder(root);
 }

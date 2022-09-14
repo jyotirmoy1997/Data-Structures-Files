@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 struct Node
 {
@@ -54,6 +54,29 @@ Node* insertBNTree(Node *root, int key, int val)
     }
     return root;
 }
+void inorder(Node *root, vector<int> &vec)
+{
+    Node *temp = root;
+    if(root == NULL)
+    {
+        return;
+    }
+    inorder(temp->left, vec);
+    vec.push_back(root->data);
+    inorder(temp->right, vec);
+}
+void inorderBST(Node *root, vector<int> &vec, int &i)
+{
+    Node *temp = root;
+    if(root == NULL)
+    {
+        return;
+    }
+    inorderBST(temp->left, vec, i);
+    root->data = vec[i];
+    i++;
+    inorderBST(temp->right, vec, i);
+}
 void traverseInorder(Node *root)
 {
     Node *temp = root;
@@ -62,17 +85,38 @@ void traverseInorder(Node *root)
         return;
     }
     traverseInorder(temp->left);
-    cout << temp->data << " ";
+    cout << root->data << " ";
     traverseInorder(temp->right);
+}
+Node* convertToBST(Node *root)
+{
+    vector<int> vec;
+    inorder(root, vec);
+    sort(vec.begin(), vec.end());
+    int i=0;
+    inorderBST(root, vec, i);
+    return root;
+}
+void inorderTraversal(Node *root)
+{
+    if(root == NULL)
+    {
+        return;
+    }
+    inorderTraversal(root->left);
+    cout << root->data << " ";
+    inorderTraversal(root->right);
 }
 int main()
 {
     Node *root = NULL;
-    root = insertRoot(root, 5);
-    insertBNTree(root, 5, 7);
-    insertBNTree(root, 5, 8);
-    insertBNTree(root, 7, 9);
-    insertBNTree(root, 8, 11);
-    insertBNTree(root, 7, 10);
+    root = insertRoot(root, 1);
+    insertBNTree(root, 1, 2);
+    insertBNTree(root, 1, 3);
+    insertBNTree(root, 2, 4);
+    // insertBNTree(root, 8, 11);
+    // insertBNTree(root, 7, 10);
+    // traverseInorder(root);
+    root = convertToBST(root);
     traverseInorder(root);
 }
