@@ -58,14 +58,14 @@ class Stack
 };
 int main()
 {
-    Stack<int> st;
-    st.push(6);
-    st.push(7);
-    st.push(1);
-    st.push(4);
-    st.push(9);
+    Stack<char> st;
+    st.push('a');
+    st.push('b');
+    st.push('c');
+    st.push('d');
+    st.push('e');
     st.pop();
-    st.push(10);
+    st.push('f');
     cout << st.top() << endl;
     st.show();
 }

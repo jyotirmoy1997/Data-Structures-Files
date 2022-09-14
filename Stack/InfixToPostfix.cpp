@@ -23,7 +23,7 @@ void infixtoPostfix(string expression)
         {
             st.push(it);
         }
-        else if(it >= 'a' && it <= 'z')
+        else if(it >= 'A' && it <= 'Z' )
         {
             postfix += it;
         }
@@ -55,6 +55,6 @@ void infixtoPostfix(string expression)
 }
 int main()
 {
-    string expression = "a+b^c*e+d^f";
+    string expression = "A+B*C-D*E+F/G";
     infixtoPostfix(expression);
 }
