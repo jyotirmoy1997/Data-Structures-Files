@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+int func(int i, int j, vector<vector<int>> &arr){
+    if(i == 0 && j == 0)
+        return 1;
+    
+    if(i < 0 || j < 0 || (arr[i][j] == -1 && i >= 0 && j >= 0))
+        return 0;
+    
+    int up = func(i-1, j, arr);
+    int left = func(i, j-1, arr);
+
+    return up + left;
+}
+int main(){
+    vector<vector<int>> arr = {
+        {0, 0, 0},
+        {0, -1, 0},
+        {0, 0, 0}
+    };
+    cout << func(2, 2, arr);
+}
