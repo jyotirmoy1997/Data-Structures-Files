@@ -26,6 +26,6 @@ bool func(vector<int> &arr, int k, int n)
 }
 int main(){
     vector<int> arr = {1, 2, 3, 4};
-    int k = 4;
-    cout << func(arr, k, arr.size() - 1);
+    int k = 10;
+    cout << func(arr, k, arr.size());
 }

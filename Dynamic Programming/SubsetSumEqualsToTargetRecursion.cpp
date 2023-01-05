@@ -16,5 +16,5 @@ bool func(int index, int target, vector<int> &arr){
 }
 int main(){
     vector<int> arr = {1, 2, 3, 4};
-    cout << func(arr.size()-1, 20, arr);
+    cout << func(arr.size()-1, 10, arr);
 }
