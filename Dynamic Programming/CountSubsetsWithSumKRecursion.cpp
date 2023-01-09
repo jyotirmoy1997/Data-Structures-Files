@@ -8,7 +8,7 @@ int func(int index, int target, vector<int> &arr){
         return (arr[0] == target) ? 1 : 0;
 
     int notTake = func(index-1, target, arr);
-    int take = false;
+    int take = 0;
     if(target >= arr[index])
         take = func(index-1, target-arr[index], arr);
 
