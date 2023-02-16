@@ -17,10 +17,16 @@ int cutRods(vector<int> &price, int N){
             dp[index][rLength] = max(take, notTake);
         }
     }
+    for(int i=0; i<N; i++){
+        for(int j=0; j<=N; j++){
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
     return dp[N-1][N];
 }
 int main(){
     vector<int> price = {2, 5, 7, 8, 10};
     int N = price.size();
-    cout << cutRods(price, N);
+    cout << endl << cutRods(price, N);
 }

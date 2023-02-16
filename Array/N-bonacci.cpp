@@ -18,7 +18,7 @@ void bonacciseries(long n, int m)
  
     // Printing result
     for (int i = 0; i < m; i++)
-        cout << a[i] << " ";
+        cout << a[i] << " ";p
 }
  
 // Driver's Code
