@@ -11,7 +11,7 @@ int stocks(int arr[], int n)
     return profit;
 }
 int main() {
-	int arr[] = {1, 5, 3, 8, 12};
+	int arr[] = {7, 1, 5, 3, 6, 4};
 	cout << stocks(arr, sizeof(arr)/sizeof(int));
 	return 0;
 }
