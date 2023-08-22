@@ -20,14 +20,20 @@ int editDistance(string s1, string s2){
                 int insert = dp[i][j-1];
                 int deletion = dp[i-1] [j];
                 int replace = dp[i-1] [j-1];
-                dp[i][j] =  1 + min(insert, min(replace, deletion));
+                dp[i][j] =  min(insert + 1, min(replace + 2, deletion + 1));
             }
         }
+    }
+    for(int i=1; i<=n; i++){
+        for(int j=1; j<=m; j++){
+            cout << dp[i][j] << " ";
+        }
+        cout << endl; 
     }
     return dp[n][m];
 }
 int main(){
-    string s1 = "horse";
-    string s2 = "ros";
-    cout << editDistance(s1, s2);
+    string s1 = "INTENTION";
+    string s2 = "EXECUTION";
+    cout << endl << editDistance(s1, s2);
 }
