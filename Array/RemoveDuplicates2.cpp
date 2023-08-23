@@ -1,12 +1,16 @@
 // Approach => https://www.youtube.com/watch?v=drbtmYjZQHQ
 
+
 #include<bits/stdc++.h>
 using namespace std;
 int removeDuplicatesOptimal(vector<int> & arr){
     int i = 0;
     for (int n : arr)
-    if (i < 2 || n > arr[i-2])
-        arr[i++] = n;
+    if (i < 2 || n > arr[i-2]){
+        arr[i] = n;
+        i++;
+    }
+        
     return i;
 }
 int main(){

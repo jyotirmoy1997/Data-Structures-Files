@@ -15,8 +15,7 @@ void rightrotateArraybyOne(int arr[], int n)
 }
 int main() {
 	int arr[] = {9, 8, 7, 6, 4, 2, 1, 3};
-	rotateArraybyOne(arr, sizeof(arr)/sizeof(int));
-    
+	rightrotateArraybyOne(arr, sizeof(arr)/sizeof(int));
 	return 0;
 }
 
