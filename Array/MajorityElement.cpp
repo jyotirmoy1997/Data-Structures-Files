@@ -31,10 +31,10 @@ int majorityElement(int arr[], int n)
    if(count <= n/2){
     return -1;
    }
-   return res;
+   return arr[res];
 }
 int main()
 {
-    int arr[] = {6, 8, 4, 8, 8};
+    int arr[] = {3, 2, 3};
     cout << majorityElement(arr, sizeof(arr)/sizeof(int));
 }
