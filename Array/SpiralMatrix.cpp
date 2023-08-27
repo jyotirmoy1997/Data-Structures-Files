@@ -1,5 +1,3 @@
-/* Approach => First Transpose and Then Reverse Each Row*/
-
 #include<bits/stdc++.h>
 using namespace std;
 void showMatrix(vector<vector<int>> &mat, int n){
