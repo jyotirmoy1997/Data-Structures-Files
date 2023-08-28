@@ -23,8 +23,8 @@ vector<pair<int, int>> activities(int f[], int s[], int n){
     return result;
 }
 int main(){
-    int f[] = {1, 4, 12, 15, 7};
-    int s[] = {13, 6, 14, 19, 13};
+    int f[] = {1, 2, 8, 9, 8, 2, 15, 16};
+    int s[] = {3, 6, 9, 11, 10, 4, 18, 17};
     vector<pair<int, int>> res = activities(f, s, sizeof(f)/sizeof(int));
     cout << "The activities are :: " << endl;
     for(auto it : res){
