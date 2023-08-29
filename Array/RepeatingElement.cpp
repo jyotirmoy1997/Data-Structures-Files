@@ -27,6 +27,6 @@ int repeatingElement(int arr[], int n){
     return slow;
 }
 int main(){
-    int arr[] = {1, 3, 2, 4, 6, 5, 7, 3};
+    int arr[] = {2, 2, 1, 4, 3};
     cout << repeatingElement(arr, sizeof(arr)/sizeof(int));
 }
