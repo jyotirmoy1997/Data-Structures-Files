@@ -1,3 +1,10 @@
+/*
+    Start from Top Right element and traverse in a diagonal fashion and check if the element 
+    occurs or not.
+    TC => O(n + m)
+
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 bool searchMatrix(vector<vector<int>> &mat, int x){
