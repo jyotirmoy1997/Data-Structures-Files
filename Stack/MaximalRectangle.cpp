@@ -45,8 +45,27 @@ int largestRectangleArea(vector<int>& arr) {
 
     return maxi;
 }
+
+int maxRectangleMatrix(vector<vector<char>> &mat){
+    int n = mat.size(), m = mat[0].size();
+    vector<int> arr(m, 0);
+    int maxi = INT_MIN;
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            cout << mat[i][j] << " ";
+            arr[j] = (mat[i][j] == '1') ? arr[j] + 1 : 0;
+        }
+        maxi = max(maxi, largestRectangleArea(arr));
+    }
+    return maxi;
+}
 int main()
 {
-    vector<int> nums = {1, 0};
-    cout << largestRectangleArea(nums);
+    // vector<vector<char>> mat = {{'1','0','1','0','0'},
+    //                             {'1','0','1','1','1'},
+    //                             {'1','1','1','1','1'},
+    //                             {'1','0','0','1','0'}};
+
+    vector<vector<char>> mat = {{'1', '0'}};
+    cout << maxRectangleMatrix(mat);
 }
