@@ -88,8 +88,8 @@ int main()
     root = insertBNTree(root, 1, 2);
     root = insertBNTree(root, 1, 3);
     root = insertBNTree(root, 2, 4);
-    root = insertBNTree(root, 8, 11);
-    root = insertBNTree(root, 7, 10);
+    root = insertBNTree(root, 2, 11);
+    root = insertBNTree(root, 3, 10);
     inorderTraversal(root);
     cout << endl;
     preorderTraversal(root);

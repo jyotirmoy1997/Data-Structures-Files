@@ -20,7 +20,7 @@ int removeDuplicatesNaive(int arr[], int n)
 }
 int removeDuplicatesEfficient(int arr[], int n)
 {
-    // This is the efficient approach. TC => O(n), SC => O(n)
+    // This is the efficient approach. TC => O(n), SC => O(1)
     int res = 1;
     for(int i=1; i<n; i++){
         if(arr[res-1] != arr[i]){

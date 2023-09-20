@@ -50,37 +50,20 @@ Node* insertBNTree(Node *root, int key, int val)
 
     return root;
 }
-
-void inorderTraversal(Node *root)
-{
-    Node *temp = root;
-    if(root == NULL)
-        return;
-
-    inorderTraversal(temp->left);
-    cout << temp->data << " ";
-    inorderTraversal(temp->right);
+void levelOrderTraversal(Node *root){
+    queue<Node*> q;
+    q.push(root);
+    while(!q.empty()){
+        auto node = q.front();
+        q.pop();
+        if(node->left != NULL)
+            q.push(node->left);
+        if(node->right != NULL)
+            q.push(node->right);
+        cout << node->data << " ";
+    }
 }
-void preorderTraversal(Node *root)
-{
-    Node *temp = root;
-    if(root == NULL)
-        return;
 
-    cout << temp->data << " ";
-    preorderTraversal(temp->left);
-    preorderTraversal(temp->right);
-}
-void postorderTraversal(Node *root)
-{
-    Node *temp = root;
-    if(root == NULL)
-        return;
-
-    postorderTraversal(temp->left);
-    postorderTraversal(temp->right);
-    cout << temp->data << " ";
-}
 int main()
 {
     Node *root = NULL;
@@ -88,12 +71,8 @@ int main()
     root = insertBNTree(root, 1, 2);
     root = insertBNTree(root, 1, 3);
     root = insertBNTree(root, 2, 4);
-    root = insertBNTree(root, 8, 11);
-    root = insertBNTree(root, 7, 10);
-    inorderTraversal(root);
-    cout << endl;
-    preorderTraversal(root);
-    cout << endl;
-    postorderTraversal(root);
+    root = insertBNTree(root, 2, 11);
+    root = insertBNTree(root, 3, 10);
+    levelOrderTraversal(root);
     return 0;
 }
