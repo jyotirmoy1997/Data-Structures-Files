@@ -50,63 +50,30 @@ Node* insertBNTree(Node *root, int key, int val)
 
     return root;
 }
-
-void inorderTraversal(Node *root)
-{
-    stack<Node*> st;
-    Node* temp = root;
-    while(true){
-        if(temp != NULL){
-            st.push(temp);
-            temp = temp->left;
-        }
-        else{
-            if(st.empty())
-                break;
-            
-            temp = st.top();
-            st.pop();
-            cout << temp->data << " ";
-            temp = temp->right;
-        }
-    }
-}
-void preorderTraversal(Node *root)
-{
-    stack<Node*> st;
-    st.push(root);
-    while(!st.empty()){
-        auto node = st.top();
-        st.pop();
-        cout << node->data << " ";
-
-        if(node->right != NULL)
-            st.push(node->right);
-
-        if(node->left != NULL)
-            st.push(node->left);
-        
-    }
-}
 void postorderTraversal(Node *root)
 {
-    stack<Node*> st1;
-    stack<int> st2;
-    st1.push(root);
-    while(!st1.empty()){
-        auto node = st1.top();
-        st1.pop();
-        if(node->left != NULL)
-            st1.push(node->left);
-
-        if(node->right != NULL)
-            st1.push(node->right);   
-        
-        st2.push(node->data);
-    }
-    while(!st2.empty()){
-        cout << st2.top() << " ";
-        st2.pop();
+    stack<Node*> st;
+    Node* curr = root;
+    while(curr != NULL || !st.empty()){
+        if(curr != NULL){
+            st.push(curr);
+            curr = curr->left;
+        }
+        else{
+            Node* temp = st.top()->right;
+            if(temp == NULL){
+                temp = st.top();
+                st.pop();
+                cout << temp->data << " ";
+                while(!st.empty() && temp == st.top()->right){
+                    temp = st.top();
+                    st.pop();
+                    cout << temp->data << " ";
+                }
+            }
+            else
+                curr = temp;
+        }
     }
 }
 int main()
@@ -119,11 +86,6 @@ int main()
     root = insertBNTree(root, 2, 11);
     root = insertBNTree(root, 3, 10);
 
-    inorderTraversal(root);
-
-    cout << endl;
-    preorderTraversal(root);
-    cout << endl;
     postorderTraversal(root);
     return 0;
 }

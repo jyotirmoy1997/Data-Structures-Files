@@ -50,64 +50,48 @@ Node* insertBNTree(Node *root, int key, int val)
 
     return root;
 }
-
-void inorderTraversal(Node *root)
+void traversal(Node *root)
 {
-    stack<Node*> st;
-    Node* temp = root;
-    while(true){
-        if(temp != NULL){
-            st.push(temp);
-            temp = temp->left;
-        }
-        else{
-            if(st.empty())
-                break;
-            
-            temp = st.top();
-            st.pop();
-            cout << temp->data << " ";
-            temp = temp->right;
-        }
-    }
-}
-void preorderTraversal(Node *root)
-{
-    stack<Node*> st;
-    st.push(root);
+    stack<pair<Node*, int>> st;
+    vector<int> inorder;
+    vector<int> preorder;
+    vector<int> postorder;
+    st.push({root, 1});
     while(!st.empty()){
-        auto node = st.top();
+        auto it = st.top();
         st.pop();
-        cout << node->data << " ";
-
-        if(node->right != NULL)
-            st.push(node->right);
-
-        if(node->left != NULL)
-            st.push(node->left);
-        
+        auto node = it.first;
+        auto val = it.second;
+        if(val == 1){
+            preorder.push_back(node->data);
+            st.push({node, ++val});
+            if(node->left != NULL)
+                st.push({node->left, 1});
+        }
+        else if(val == 2){
+            inorder.push_back(node->data);
+            st.push({node, ++val});
+            if(node->right != NULL)
+                st.push({node->right, 1});
+        }
+        else if(val == 3){
+            postorder.push_back(node->data);
+        }
     }
-}
-void postorderTraversal(Node *root)
-{
-    stack<Node*> st1;
-    stack<int> st2;
-    st1.push(root);
-    while(!st1.empty()){
-        auto node = st1.top();
-        st1.pop();
-        if(node->left != NULL)
-            st1.push(node->left);
 
-        if(node->right != NULL)
-            st1.push(node->right);   
-        
-        st2.push(node->data);
-    }
-    while(!st2.empty()){
-        cout << st2.top() << " ";
-        st2.pop();
-    }
+    for(auto it : inorder)
+        cout << it << " ";
+
+    cout << endl;
+
+    for(auto it : preorder)
+        cout << it << " ";
+
+    cout << endl;
+
+    for(auto it : postorder)
+        cout << it << " ";
+
 }
 int main()
 {
@@ -118,12 +102,6 @@ int main()
     root = insertBNTree(root, 2, 4);
     root = insertBNTree(root, 2, 11);
     root = insertBNTree(root, 3, 10);
-
-    inorderTraversal(root);
-
-    cout << endl;
-    preorderTraversal(root);
-    cout << endl;
-    postorderTraversal(root);
+    traversal(root);
     return 0;
 }
