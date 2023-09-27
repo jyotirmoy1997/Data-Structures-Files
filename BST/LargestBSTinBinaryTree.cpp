@@ -77,17 +77,16 @@ void inorderTraversal(Node *root)
 NodeVal largestBSTSubtree(Node *root)
 {
     if(root == NULL)
-    {
         return NodeVal(INT_MAX, INT_MIN, 0);
-    }
+    
     auto left = largestBSTSubtree(root->left);
     auto right = largestBSTSubtree(root->right);
 
     if(left.maxNode < root->data && root->data < right.minNode)
-    {
-        // It is a BST then
-        return NodeVal(min(root->data, left.minNode), max(root->data, right.maxNode), left.maxSize + right.maxSize + 1);
-    }
+        return NodeVal(min(root->data, left.minNode), 
+                       max(root->data, right.maxNode), 
+                       left.maxSize + right.maxSize + 1);
+    
     return NodeVal(INT_MIN, INT_MAX, max(left.maxSize, right.maxSize));
 }
 int largestBST(Node *root)
