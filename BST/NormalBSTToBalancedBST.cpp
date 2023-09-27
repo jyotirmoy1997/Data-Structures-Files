@@ -1,3 +1,6 @@
+/* Approach => First, we perform an Inorder traversal and put all the tree nodes in 
+a vector. then we use binary search to recursively build the tree. */
+
 #include<bits/stdc++.h>
 using namespace std;
 struct Node{
