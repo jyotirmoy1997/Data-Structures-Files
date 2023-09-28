@@ -37,10 +37,10 @@ vector<int> peakMatrix(vector<vector<int>> &mat){
         {
             int mid = (low+high)/2;
                 
-            int upper = i>0?mat[i][mid]:-1;
-            int lower = i<rows-1?mat[i+1][mid]:-1;
-            int left = mid>0?mat[i][mid-1]:-1;
-            int right = mid<cols-1?mat[i][mid+1]:-1;
+            int upper = i > 0 ? mat[i][mid] : -1;
+            int lower = i < rows-1 ? mat[i+1][mid] : -1;
+            int left = mid > 0 ? mat[i][mid-1] : -1;
+            int right = mid < cols-1 ? mat[i][mid+1] : -1;
 
             int maxVertical = max(upper,lower);
             int maxHorizontal = max(left,right);
@@ -49,7 +49,7 @@ vector<int> peakMatrix(vector<vector<int>> &mat){
             int maxRightHalf = max(right,mat[i][cols-1]);
 
 
-            if(mat[i][mid]>=max(maxVertical,maxHorizontal))
+            if(mat[i][mid] >= max(maxVertical, maxHorizontal))
             {
                 ans.push_back(i);
                 ans.push_back(mid);
