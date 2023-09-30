@@ -17,7 +17,7 @@ public:
     }
     void show()
     {
-        for(int i; i<5; i++)
+        for(int i=0; i<n; i++)
         {
             cout << "Vertex [" << i << "] is connected to :: ";
             for(auto v : graph[i])
