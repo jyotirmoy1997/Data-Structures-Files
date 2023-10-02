@@ -27,6 +27,37 @@ int lengthLL(Node* head){
     }
     return length;
 }
+
+// Recursive Solution
+Node* reverseKGroup(Node* head, int k) {
+    Node* temp = head;
+
+    // Traverse to k nodes
+    for(int i=0; i<k; i++){
+        if(temp == NULL)
+            return head;
+        
+        temp = temp->next;
+    }
+
+    // Reverse from head to K
+    Node* prev = NULL;
+    Node* ptr = NULL;
+    temp = head;
+    for(int i=0; i<k; i++){
+        ptr = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = ptr;
+    }
+
+    // Now, head will be reversed as well, so we attach the next link to head
+    if(ptr != NULL)
+        head->next = reverseKGroup(ptr, k);
+    return prev;
+}
+
+// Iterative Solution
 Node* reverseNodesKGroup(Node* head, int k){
     if(head == NULL || head->next == NULL)
         return head;
