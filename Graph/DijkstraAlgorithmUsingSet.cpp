@@ -48,23 +48,25 @@ class Graph
             }
             distance[source] = 0;
             prev[source] = source;
-            priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-            pq.push(make_pair(0, source));
-            while(!pq.empty())
+            set<pair<int, int>> st;
+            st.insert({0, source});
+            while(!st.empty())
             {
-                auto it = pq.top();
-                // cout << it.first << " - " << it.second << endl;
-                pq.pop();
+                auto it = *(st.begin());
                 int dist = it.first;
                 int u = it.second;
+                st.erase(it);
                 for(auto adj : graph[u])
                 {
                     int temp_distance = dist + adj.second;
                     if(temp_distance < distance[adj.first])
                     {
+                        if(distance[adj.first] != INT_MAX)
+                            st.erase({distance[adj.first], adj.first});
+
                         distance[adj.first] = temp_distance;
                         prev[adj.first] = u;
-                        pq.push(make_pair(dist + adj.second, adj.first));
+                        st.insert({distance[adj.first], adj.first});
                     }
                 }
             }

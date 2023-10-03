@@ -12,79 +12,69 @@ public:
     }
     void addEdge(int u, int v, int w)
     {
-        graph[u].push_back(make_pair(v, w));
+        graph[u].push_back({v, w});
     }
-    void dfs(int v, stack<int> &st, vector<int> &vis)
+    void show()
     {
-        vis[v] = 1;
-        for(auto it: graph[v])
+        for(int i=0; i<n; i++)
         {
-            if(!vis[it.first])
+            cout << i << " - ";
+            for(auto it:graph[i])
             {
-                dfs(it.first, st, vis);
+                cout << "(" << it.first << "," << it.second << ")";
             }
+            cout << endl;
         }
-        st.push(v);
     }
-    void shortestPath()
-    {
-        vector<int> vis(n, 0);
+    void dfs(int node, vector<int> &vis, stack<int> &trav){
+        vis[node] = 1;
+        for(auto v : graph[node]){
+            if(!vis[v.first])
+                dfs(v.first, vis, trav);
+        }
+        trav.push(node);
+    }
+
+    // Intuition -> First Find the Topological Sort, then For each node, compute the distance from source
+    void minDistance(int source){
         stack<int> trav;
-        for(int i=0; i<n; i++)
-        {
-            if(vis[i] == 0)
-            {
-                dfs(i, trav, vis);
-            }
+        vector<int> vis(n, 0);
+        for(int i=0; i<n; i++){
+            if(!vis[i])
+                dfs(i, vis, trav);
         }
-        vector<int> dist(n, INT_MAX);
-        dist[0] = 0;
-        while(!trav.empty())
-        {
-            int v = trav.top();
-            // cout << v << " ";
+        
+        vector<int> dis(n, INT_MAX);
+        dis[source] = 0;
+        while(!trav.empty()){
+            auto node = trav.top();
             trav.pop();
-            if(dist[v] != INT_MAX)
-            {
-                for(auto it: graph[v])
-                {
-                    int temp_distance = dist[v] + it.second;
-                    if(temp_distance < dist[it.first])
-                    {
-                        dist[it.first] = temp_distance;
-                    }
-                }
+            int distance = dis[node];
+            for(auto v : graph[node]){
+                dis[v.first] = min(distance + v.second, dis[v.first]);
             }
         }
-        for(int i=0; i<n; i++)
-        {
-            cout << i << " - " << dist[i] << endl;
+        for(int i=0; i<n; i++){
+            cout << i << "->" << dis[i] << endl;
         }
     }
-    // void show()
-    // {
-    //     for(int i; i<5; i++)
-    //     {
-    //         cout << i << " - ";
-    //         for(auto v : graph[i])
-    //         {
-    //             cout << v;
-    //         }
-    //         cout << endl;
-    //     }
-    // }
+
 };
 int main()
 {
-    int v = 5;
-    Graph g(v+1);
+    int v = 7;
+    Graph g(v);
+
     g.addEdge(0, 1, 2);
-    g.addEdge(0, 4, 1);
-    g.addEdge(1, 2, 3);
-    g.addEdge(4, 2, 2);
-    g.addEdge(4, 5, 4);
-    g.addEdge(5, 3, 1);
-    g.addEdge(2, 3, 6);
-    // g.show();
-    g.shortestPath();
+    g.addEdge(1, 3, 1);
+    g.addEdge(2, 3, 3);
+    g.addEdge(4, 2, 1);
+    g.addEdge(4, 0, 3);
+    g.addEdge(6, 4, 2);
+    g.addEdge(5, 4, 1);
+    g.addEdge(6, 5, 3);
+
+    g.show();
+    cout << endl;
+    g.minDistance(6);
 }
