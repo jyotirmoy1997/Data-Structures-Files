@@ -35,7 +35,7 @@ int celebrity(vector<vector<int>> &mat){
     for(int i=0; i<n; i++){
         if(candidate != i && mat[i][candidate] == 1)
             flag2 = true;
-        else if(candidate != i && mat[i][candidate] == 0) 
+        else if(candidate != i && mat[candidate][i] == 0) 
             flag2 = false;
     }
     if(flag1 && flag2)
