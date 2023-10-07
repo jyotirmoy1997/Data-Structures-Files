@@ -11,9 +11,9 @@ struct Node
         right = NULL;
     }
 };
-void verticalOrder(Node *root)
+void topView(Node *root)
 {
-    map<int, int> mp;
+    unordered_map<int, int> mp;
     int mx=0, mn=0, hd=0;
     queue<pair<Node*, int>> q;
     q.push(make_pair(root, hd));
@@ -50,5 +50,5 @@ int main()
     root->left->right = new Node(5);
     root->left->right->left = new Node(6);
     root->right->right = new Node(7);
-    verticalOrder(root);
+    topView(root);
 }
