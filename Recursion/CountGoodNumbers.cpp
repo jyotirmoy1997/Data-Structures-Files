@@ -1,3 +1,8 @@
+/* There are 4 prime numbers between 0-9 and 5 even numbers between 0-9.
+   The Idea is to calculate how many even places are there and how many odd places are there.
+   Finally, the total no. of possibilities are given as :: (5 ^ even places) x (4 ^ odd places)
+
+*/
 
 #include<bits/stdc++.h>
 using namespace std;
