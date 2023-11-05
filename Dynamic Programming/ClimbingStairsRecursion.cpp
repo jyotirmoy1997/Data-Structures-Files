@@ -6,7 +6,7 @@ Count the number of ways, the person can reach the top.*/
 using namespace std;
 int climbingStairsRecursion(int n){
     if(n <= 1)
-        return n;
+        return 1;
     int left = climbingStairsRecursion(n-1);
     int right = climbingStairsRecursion(n-2);
     return left + right;

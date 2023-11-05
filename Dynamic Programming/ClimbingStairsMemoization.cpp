@@ -5,18 +5,18 @@ Count the number of ways, the person can reach the top.*/
 
 #include<bits/stdc++.h>
 using namespace std;
-int climbingStairsRecursion(int n, vector<int> &vec)
+int climbingStairsMemoization(int n, vector<int> &vec)
 {
     if(n <= 1)
-        return n;
+        return 1;
     if(vec[n] != -1)
         return vec[n];
-    int left = climbingStairsRecursion(n-1, vec);
-    int right = climbingStairsRecursion(n-2, vec);
+    int left = climbingStairsMemoization(n-1, vec);
+    int right = climbingStairsMemoization(n-2, vec);
     vec[n] = left + right;
     return vec[n];
 }
 int main(){
     vector<int> vec(8, -1);
-    cout << climbingStairsRecursion(6, vec);
+    cout << climbingStairsMemoization(6, vec);
 }
