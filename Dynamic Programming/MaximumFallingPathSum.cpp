@@ -32,7 +32,7 @@ int fallingPathSum(vector<vector<int>> &matrix){
     int m = matrix[0].size();
 
     int res = -1e9;
-    for(int i=0; i<n; i++){
+    for(int i=0; i<m; i++){
         res = max(res, func(n-1, i, matrix, m));
     }
     return res;
