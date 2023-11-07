@@ -4,6 +4,8 @@ bool func(int index, int target, vector<int> &arr){
     if(target == 0)
         return true;
     
+    // If some target is still left, then it has to be equal to the 0th element.
+    // Else we return false stating that the target cannot be achieved.
     if(index == 0)
         return (arr[0] == target);
 
