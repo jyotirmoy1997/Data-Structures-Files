@@ -28,31 +28,35 @@ void shortestCommonSuperSequence(string s1, string s2){
     vector<vector<int>> dp(n+1, vector<int> (m+1, -1));
     cout << "Length :: " << (n + m - func(s1, s2, n, m, dp));
     int i = n, j = m;
-    stack<char> st;
+    string s = "";
     while(i > 0 && j > 0){
         if(s1[i-1] == s2[j-1]){
-            st.push(s1[i-1]);
+            s += s1[i-1];
             i--;
             j--;
         }
         else{
             if(dp[i-1][j] > dp[i][j-1]){
-                st.push(s1[i-1]);
+                s += s1[i-1];
                 i--;
             }
-
-            
             else{
-                st.push(s2[j-1]);
+                s += s2[j-1];
                 j--;
             }
         }
     }
-    while(!st.empty()){
-        auto it = st.top();
-        cout << it;
-        st.pop();
+    while(i > 0){
+        s += s1[i-1];
+        i--;
     }
+    while(j > 0){
+        s += s2[j-1];
+        j--;
+    }
+
+    reverse(s.begin(), s.end());
+    cout << s;
 }
 int main(){
     string s1 = "abcde";
