@@ -13,19 +13,14 @@ will keep track of how many transactions have been done.
 
 #include<bits/stdc++.h>
 using namespace std;
-int stocks(vector<int> &prices, int limit)
-{
+int maxProfit(int k, vector<int>& prices) {
     int n = prices.size();
-    vector<vector<vector<int>>> dp(n+1, vector<vector<int>> (2, vector<int> (limit+1, 0)));
-
-    for(int index=n-1; index>=0; index--)
-    {
-        for(int canBuy=0; canBuy<=1; canBuy++)
-        {
-            for(int cap=1; cap<=limit; cap++)
-            {
+    vector<vector<vector<int>>> dp(n+1, vector<vector<int>> (2, vector<int> (k+1, 0)));
+    for(int index=n-1; index>=0; index--){
+        for(int canBuy=0; canBuy<2; canBuy++){
+            for(int cap=1; cap<=k; cap++){
                 int profit = 0;
-                if(canBuy == 1){
+                if(canBuy){
                     int buy = -prices[index] + dp[index+1][0][cap];
                     int notBuy = 0 + dp[index+1][1][cap];
                     profit = max(buy, notBuy);
@@ -39,12 +34,10 @@ int stocks(vector<int> &prices, int limit)
             }
         }
     }
-    
-    return dp[0][1][limit];
+    return dp[0][1][k];
 }
-
 int main(){
     vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
-    int transcationLimit = 2;
-    cout << stocks(prices, 2);
+    int transcationLimit = 3;
+    cout << maxProfit(transcationLimit, prices);
 }

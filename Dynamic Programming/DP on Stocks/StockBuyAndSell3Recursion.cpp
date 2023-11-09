@@ -1,6 +1,6 @@
 /* Given an array of the price of Stocks (index indicates days), 
 we need to figure out what will be the maximum profit if the stock is
-bought and sold a given number of times.
+bought and sold exactly twice.
 
 Note => We've to sell a stock before we can buy it again
 
