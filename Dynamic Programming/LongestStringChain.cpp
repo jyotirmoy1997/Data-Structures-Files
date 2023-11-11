@@ -1,3 +1,12 @@
+/* This problem follows a similar approach as LIS. 
+   
+   1. First We Sort the Array.
+   2. Apply a custom string matching function to check whether teo strings
+      differ by only one character.
+   3. Apply LIS (Algorithmic) on two strings that differ by only one character.
+
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
 
