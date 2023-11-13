@@ -23,4 +23,4 @@ int main(){
 	int n = 7;
 	cout << minimumCostCut(n, c, cuts);
 	return 0;
-}
+} 
