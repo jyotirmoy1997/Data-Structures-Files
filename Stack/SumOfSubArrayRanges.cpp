@@ -5,7 +5,7 @@ long long sumSubarrayMins(vector<int>& arr){
     vector<int> ps(n), ns(n), pg(n), ng(n);
     stack<int> st;
 
-    //  Previous Smaller Element
+    // Here, we are storing the difference of the indices between the curr and prev smaller element
     for(int i=0; i<n; i++){
         while(!st.empty() && arr[st.top()] >= arr[i])
             st.pop();
@@ -21,7 +21,7 @@ long long sumSubarrayMins(vector<int>& arr){
     while(!st.empty())
         st.pop();
 
-    // Next Smaller Element
+    // Here, we are storing the difference of the indices between the curr and next smaller element
     for(int i=n-1; i>=0; i--){
         while(!st.empty() && arr[st.top()] > arr[i])
             st.pop();
@@ -37,7 +37,7 @@ long long sumSubarrayMins(vector<int>& arr){
     while(!st.empty())
         st.pop();
 
-    // Previous Greater Element
+    // Here, we are storing the difference of the indices between the curr and prev greater element
     for(int i=0; i<n; i++){
         while(!st.empty() && arr[st.top()] <= arr[i])
             st.pop();
@@ -53,7 +53,7 @@ long long sumSubarrayMins(vector<int>& arr){
     while(!st.empty())
         st.pop();
 
-    // Next Greater Element
+    // Here, we are storing the difference of the indices between the curr and prev greater element
     for(int i=n-1; i>=0; i--){
         while(!st.empty() && arr[st.top()] < arr[i])
             st.pop();

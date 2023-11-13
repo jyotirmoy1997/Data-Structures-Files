@@ -61,11 +61,11 @@ int maxRectangleMatrix(vector<vector<char>> &mat){
 }
 int main()
 {
-    // vector<vector<char>> mat = {{'1','0','1','0','0'},
-    //                             {'1','0','1','1','1'},
-    //                             {'1','1','1','1','1'},
-    //                             {'1','0','0','1','0'}};
+    vector<vector<char>> mat = {{'1','0','1','0','0'},
+                                {'1','0','1','1','1'},
+                                {'1','1','1','1','1'},
+                                {'1','0','0','1','0'}};
 
-    vector<vector<char>> mat = {{'1', '0'}};
+    // vector<vector<char>> mat = {{'1', '0'}};
     cout << maxRectangleMatrix(mat);
 }
