@@ -30,6 +30,9 @@ int maximumOnes(vector<vector<int>> &mat){
 }
 int main()
 {
-    vector<vector<int>> mat = {{0, 1, 1, 1}, {0, 0, 1, 1}, {0, 0, 0, 1}, {0, 0, 0, 0}};
+    vector<vector<int>> mat = {{0, 1, 1, 1}, 
+                               {0, 0, 1, 1}, 
+                               {0, 0, 0, 1}, 
+                               {0, 0, 0, 0}};
     cout << maximumOnes(mat);
 }

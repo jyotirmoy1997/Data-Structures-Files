@@ -25,5 +25,15 @@ vector<vector<int>> onesMinusZeros(vector<vector<int>> &grid){
     return diff;
 }
 int main(){
+    vector<vector<int>> grid = {{0,1,1},
+                                {1,0,1},
+                                {0,0,1}};
 
+    auto res = onesMinusZeros(grid);
+    for(auto it : res){
+        for(auto el : it)
+            cout << el << " ";
+
+        cout << endl;
+    }
 }

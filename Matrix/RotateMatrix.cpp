@@ -34,7 +34,9 @@ void rotateMatrix(vector<vector<int>> &mat, int n){
     }
 }
 int main(){
-    vector<vector<int>> mat = {{1,2,3},{4,5,6},{7,8,9}};
+    vector<vector<int>> mat = {{1,2,3},
+                               {4,5,6},
+                               {7,8,9}};
     int n = mat.size();
     rotateMatrix(mat, n);
     showMatrix(mat, n);

@@ -44,7 +44,7 @@ int median(vector<vector<int>> &mat){
 int main()
 {
     vector<vector<int>> mat = {{1, 3, 8},
-                             {2, 3, 4},
-                             {1, 2, 5}};
+                               {2, 3, 4},
+                               {1, 2, 5}};
     cout << median(mat);
 }

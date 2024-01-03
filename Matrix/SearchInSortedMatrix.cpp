@@ -27,6 +27,8 @@ bool binarySearchMatrix(vector<vector<int>> &mat, int x){
 }
 int main()
 {
-    vector<vector<int>> mat = {{1,3,5,7},{10,11,16,20},{23,30,34,60}};
+    vector<vector<int>> mat = {{1,3,5,7},
+                               {10,11,16,20},
+                               {23,30,34,60}};
     cout << binarySearchMatrix(mat, 3);
 }
