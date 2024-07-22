@@ -35,6 +35,7 @@ TreeNode* dfs(TreeNode* root, unordered_set<int> &st, unordered_set<TreeNode*> &
 vector<TreeNode*> delNodes(TreeNode* root, vector<int>& to_delete) {
     unordered_set<int> st(to_delete.begin(), to_delete.end());
     unordered_set<TreeNode*> res;
+    res.insert(root);
     TreeNode* node = dfs(root, st, res);
     vector<TreeNode*> forest(res.begin(), res.end());
     return forest;
